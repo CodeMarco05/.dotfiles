@@ -35,6 +35,7 @@ vim.api.nvim_set_keymap('n', '<ScrollWheelUp>', '2k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<ScrollWheelDown>', '2j', { noremap = true })
 
 
+
 --vim.diagnostic.config({
 --    virtual_text = false,  -- Disable inline errors
 --   signs = true,          -- Keep signs in the gutter
