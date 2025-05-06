@@ -3,13 +3,11 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
-
 -- filetype init for custom options
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
-  command = "setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab"
+  command = "setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab",
 })
-
 
 vim.g.mapleader = " "
 
@@ -29,12 +27,9 @@ vim.opt.scrolloff = 3
 vim.opt.sidescrolloff = 5
 vim.opt.smoothscroll = true
 
-
 -- Slow down mouse scroll
-vim.api.nvim_set_keymap('n', '<ScrollWheelUp>', '2k', { noremap = true })
-vim.api.nvim_set_keymap('n', '<ScrollWheelDown>', '2j', { noremap = true })
-
-
+vim.api.nvim_set_keymap("n", "<ScrollWheelUp>", "2k", { noremap = true })
+vim.api.nvim_set_keymap("n", "<ScrollWheelDown>", "2j", { noremap = true })
 
 --vim.diagnostic.config({
 --    virtual_text = false,  -- Disable inline errors
