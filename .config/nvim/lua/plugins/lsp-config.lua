@@ -14,8 +14,9 @@ return {
 					"rust_analyzer",
 					"marksman",
 					"clangd",
-          "jdtls",
-          "pyright"
+					"jdtls",
+					"pyright",
+					"texlab",
 				},
 			})
 		end,
@@ -44,15 +45,30 @@ return {
 				capabilities = capabilities,
 			})
 
-      lspconfig.pyright.setup({
-        capabilities = capabilities
-      })
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
 
+			-- ✅ LaTeX with Compile on Save
+			lspconfig.texlab.setup({
+				capabilities = capabilities,
+				settings = {
+					texlab = {
+						build = {
+							executable = "latexmk",
+							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+							onSave = true, -- Compile on save
+							forwardSearchAfter = false, -- No automatic forward search
+						},
+						-- The forwardSearch block is now removed completely.
+					},
+				},
+			})
 
-      -- Java
-      lspconfig.jdtls.setup({
-        capabilities = capabilities,
-      })
+			-- Java
+			lspconfig.jdtls.setup({
+				capabilities = capabilities,
+			})
 
 			-- Key mappings for LSP functions
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })
