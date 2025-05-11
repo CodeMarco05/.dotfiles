@@ -1,30 +1,53 @@
 return {
-  "nvimtools/none-ls.nvim",
-  config = function()
-    local null_ls = require("null-ls")
-    local mason = require("mason")
+	"nvimtools/none-ls.nvim",
+	config = function()
+		local null_ls = require("null-ls")
+		local mason = require("mason")
 
-    -- Ensure that latexindent, stylua, prettier, and other tools are installed
-    mason.setup({
-      ensure_installed = { 
-        "latexindent",  -- LaTeX formatting tool
-        "stylua",       -- Lua code formatter
-        "prettier",     -- JavaScript, HTML, CSS formatter
-      },
-    })
+		-- Setup Mason to ensure formatter tools are installed
+		mason.setup({
+			ensure_installed = {
+				"latexindent", -- LaTeX
+				"stylua", -- Lua
+				"prettier", -- JS/TS/JSON/HTML/CSS/Markdown/YAML/etc.
+			},
+		})
 
-    -- Setup null-ls with the installed tools
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.stylua,      -- Lua formatting
-        null_ls.builtins.formatting.prettier,    -- Prettier formatting
-      },
-    })
+		-- Setup null-ls with the formatters
+		null_ls.setup({
+			sources = {
+				-- Lua formatter
+				null_ls.builtins.formatting.stylua,
 
-    -- Key mapping for formatting LaTeX (and other supported formats)
-    vim.keymap.set("n", "<leader>ff", function()
-      vim.lsp.buf.format()  -- This will trigger formatting for the current buffer
-    end, { noremap = true, silent = true })
-  end,
+				-- Prettier for supported filetypes
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"typescript",
+						"typescriptreact",
+						"vue",
+						"css",
+						"scss",
+						"less",
+						"html",
+						"json",
+						"jsonc",
+						"yaml",
+						"markdown",
+						"markdown.mdx",
+						"graphql",
+						"handlebars",
+					},
+				}),
+
+				-- Add more formatters here if needed
+			},
+		})
+
+		-- Format on command
+		vim.keymap.set("n", "<leader>ff", function()
+			vim.lsp.buf.format()
+		end, { noremap = true, silent = true })
+	end,
 }
-
