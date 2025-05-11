@@ -17,6 +17,7 @@ return {
 					"jdtls",
 					"pyright",
 					"texlab",
+          "ts_ls"
 				},
 			})
 		end,
@@ -48,6 +49,10 @@ return {
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
 			})
+
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+      })
 
 			-- ✅ LaTeX with Compile on Save
 			lspconfig.texlab.setup({
