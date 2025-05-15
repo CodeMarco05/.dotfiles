@@ -1,7 +1,9 @@
 # Alacritty Configuration File (TOML format)
+# font cache flush fc-cache -fv ~/.local/share/fonts
+
 
 [font]
-size = 14.0
+size = 12.0
 
 [font.normal]
 family = "CaskaydiaCove Nerd Font Mono"
@@ -20,8 +22,11 @@ family = "CaskaydiaCove Nerd Font Mono"
 style = "Bold Italic"
 
 [window]
-opacity = 1.0
+opacity = 0.8
 option_as_alt = "Both"
+dimensions = { columns = 130, lines = 40 }
+title = "CodeBrandt"
+dynamic_title = false
 
 [colors.primary]
 background = "0x1e1e1e"
