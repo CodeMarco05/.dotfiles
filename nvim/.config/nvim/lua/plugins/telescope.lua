@@ -7,10 +7,11 @@ return {
       'BurntSushi/ripgrep'
     },
     config = function()
+
       local builtin = require("telescope.builtin")
-      vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
+      vim.keymap.set('n', '<leader>pf', builtin.find_files, {desc = "Search through files"})
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Snipped search in project"})
+      vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {desc = "Search in current file"})
     end
   },
   {

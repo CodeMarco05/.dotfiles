@@ -7,13 +7,13 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-    commit = "9a38ac1498e957c7178b502c3d86a9ff36dbbd9a",
 		config = function()
 			require("mason-lspconfig").setup({
-        automatic_enable = false,
+				automatic_enable = false,
 				ensure_installed = {
 					"rust_analyzer",
 					"marksman",
+					"lua_ls",
 					"clangd",
 					"jdtls",
 					"pyright",
@@ -30,6 +30,10 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local lspconfig = require("lspconfig")
+
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
 
 			lspconfig.dockerls.setup({
 				capabilities = capabilities,

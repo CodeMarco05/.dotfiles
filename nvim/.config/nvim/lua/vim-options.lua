@@ -36,18 +36,19 @@ vim.api.nvim_set_keymap("n", "<ScrollWheelDown>", "2j", { noremap = true })
 
 -- Set German spell checking
 vim.keymap.set("n", "<leader>sg", function()
-	vim.opt.spelllang = "de_DE"
+	vim.opt.spelllang = "de"
+	vim.cmd("set spell")
 	print("Spell language set to German")
 end, { desc = "Set spell language to German" })
 
--- Unset spell language (turn off spellcheck)
-vim.keymap.set("n", "<leader>su", function()
-	vim.opt.spelllang = ""
-	print("Spell language unset")
-end, { desc = "Unset spell language" })
+vim.keymap.set("n", "<leader>se", function()
+	vim.opt.spelllang = "en"
+	vim.cmd("set spell")
+	print("Spell language set to English")
+end, { desc = "Set spell language to English" })
 
 --vim.diagnostic.config({
---    virtual_text = false,  -- Disable inline errors
---   signs = true,          -- Keep signs in the gutter
---   underline = true,      -- Keep underline for errors
+--  virtual_text = false,  -- Disable inline errors
+--  signs = true,          -- Keep signs in the gutter
+--  underline = true,      -- Keep underline for errors
 --})
